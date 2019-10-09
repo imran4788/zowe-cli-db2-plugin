@@ -14,7 +14,7 @@
  * @export
  * @class Diagnose
  */
-export class ReorgJcl {
+export class ReorgJCL {
 
     /**
      * Get an SQL to pass to the DB2 plugins z/OSMF REST API
@@ -25,7 +25,7 @@ export class ReorgJcl {
      * @memberof ColleDiagnosect
      */
 
-    public static reorgJCL(dbsName: string,user: string, objType: string, objName: string, ): void {
+    public static reorg(dbsName: string,user: string, objType: string, objName: string, ): string {
 
         let option: string;
 
@@ -47,11 +47,12 @@ export class ReorgJcl {
         "//             COND=(4,LT),\n" +
         "//             NOTIFY=&SYSUID,\n" +
         "// USER=" + user  +"\n" +
+        "/* JOBPARM SYSAFF=CA31\n" +
         "//         SET VCAT='D11A'      //SSID IF !SHARED, DSN+SSID IF SHARED\n" +
         "//         SET SSID='D11A'\n" +
         "//         SET RUNLIB=PTIPROD.RD200.PRD.CDBALOAD\n" +
         "//*---------------------------------------------------------------\n" +
-        "//*   RUNSTATS FOR TABLESPACE & INDEX\n" +
+        "//*   REORG FOR TABLESPACE & INDEX\n" +
         "//*---------------------------------------------------------------\n" +
         "//***********************<REORG TO ACTIVATE COMPRESSION>***************\n" +
         "//REORG1   EXEC PGM=DSNUTILB,REGION=4M,PARM='&SSID.,UTLD11A'\n" +
@@ -70,5 +71,6 @@ export class ReorgJcl {
         "//SYSIN    DD *\n" +
         "  REORG " + objType + " " + dbsName + "." + objName + " "  + option + "\n" +
         "/* ";
+        return reOrgjcl;
     }
 }

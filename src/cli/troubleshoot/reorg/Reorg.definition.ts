@@ -17,16 +17,22 @@ export const ReorgDefinition: ICommandDefinition = {
     type: "command",
     summary: "Troubleshoot databaase objects for the Reorg action",
     description: "Troubleshoot all or specified database objects for Reorg action.",
-    handler: __dirname + "/All.handler",
+    handler: __dirname + "/Reorg.handler",
     profile: {
-        optional: ["db2"]
+        optional: ["db2", "zosmf"],
     },
     options: [
         {
-            name: "databasename",
+            name: "Database name",
             aliases: ["dbn"],
             type: "string",
-            description: "The database name for reorg",
+            description: "The Database name for reorg",
+        },
+        {
+            name: "Tablespace name",
+            aliases: ["ts"],
+            type: "string",
+            description: "The Tablespace name for reorg",
         },
     ],
     examples: [

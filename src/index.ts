@@ -26,4 +26,8 @@ export * from "./api/ExportTableSQL";
 export * from "./api/CallSP";
 export * from "./api/DB2Error";
 export * from "./api/Diagnose";
+export * from "./api/ReorgJCL";
+export * from "./api/IRequestBody";
+export * from "./api/DBHeaders";
+export * from "./api/ZSession";
 export * from "./api/doc/ISqlCollect";

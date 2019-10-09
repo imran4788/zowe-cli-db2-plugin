@@ -15,7 +15,7 @@
       150
     ],
     "no-magic-numbers": [
-      true,
+      false,
       -1,
       0,
       1,

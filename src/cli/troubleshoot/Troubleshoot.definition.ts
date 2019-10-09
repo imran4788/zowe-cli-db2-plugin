@@ -11,6 +11,7 @@
 
 import { ICommandDefinition } from "@zowe/imperative";
 import { AllDefinition } from "./all/All.definition";
+import { ReorgDefinition } from "./reorg/Reorg.definition";
 import { DB2Session } from "../../index";
 
 export const Execute: ICommandDefinition = {
@@ -19,7 +20,7 @@ export const Execute: ICommandDefinition = {
     summary: "Troubleshoot database objects",
     description: "Take recommended action against ineffecint database objects to improve performance",
     children: [
-        AllDefinition,
+        AllDefinition, ReorgDefinition
     ],
     passOn: [
         {
